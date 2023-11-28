@@ -1,0 +1,6 @@
+<button *ngIf="!isLogo" (click)="clickHandler()" type="button">
+    <img [src]="imagePath"  />
+</button>
+<a *ngIf="isLogo" routerLink="/">
+    <img [src]="imagePath"  />
+</a>
