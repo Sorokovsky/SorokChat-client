@@ -10,15 +10,14 @@ import { Router, RouterModule } from '@angular/router';
 })
 export class AvatarComponent implements OnInit {
   constructor(private router: Router) {}
-  ngOnInit(): void {
-    if(!this.imagePath) {
-      this.imagePath = this.isLogo ? '../../assets/img/logo.svg' : '../../assets/img/avatar.svg';
-    }
-  }
   @Input() clickHandler: () => void = () => {
     this.router.navigate(['/']);
   };
   @Input() isLogo: boolean = true;
   @Input() imagePath?: string;
-
+  ngOnInit(): void {
+    if(!this.imagePath) {
+      this.imagePath = this.isLogo ? '../../assets/img/logo.svg' : '../../assets/img/avatar.svg';
+    }
+  }
 }
