@@ -10,7 +10,7 @@ import { Router, RouterModule } from '@angular/router';
 })
 export class AvatarComponent implements OnInit {
   constructor(private router: Router) {}
-  @Input() clickHandler: () => void = () => {
+  @Input() clickHandler: (event: Event) => void = (event) => {
     this.router.navigate(['/']);
   };
   @Input() isLogo: boolean = true;
