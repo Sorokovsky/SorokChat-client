@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 @Component({
@@ -6,14 +6,19 @@ import { Router, RouterModule } from '@angular/router';
   standalone: true,
   imports: [CommonModule, RouterModule],
   templateUrl: './avatar.component.html',
-  styleUrl: './avatar.component.sass'
+  styleUrl: './avatar.component.sass',
 })
-export class AvatarComponent {
+export class AvatarComponent implements OnInit {
   constructor(private router: Router) {}
-  @Input() imagePath?: string = '../../assets/img/logo.svg';
+  ngOnInit(): void {
+    if(!this.imagePath) {
+      this.imagePath = this.isLogo ? '../../assets/img/logo.svg' : '../../assets/img/avatar.svg';
+    }
+  }
   @Input() clickHandler: () => void = () => {
     this.router.navigate(['/']);
-    
   };
   @Input() isLogo: boolean = true;
+  @Input() imagePath?: string;
+
 }
